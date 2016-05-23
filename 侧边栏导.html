@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>侧边滚动栏</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		a{text-decoration: none;}
+		.wrap,body{width: 960px;margin: 0 auto;position: relative;}
+		body{transition: all 1s;}
+		.wrap>div{height: 800px;border: 1px solid red;}
+		.nav{position: fixed;right: 0;top:12%;}
+		.nav>a{display: block;width: 50px;height: 50px;border:1px solid blue;text-align: center;line-height: 50px;cursor: pointer;}
+		.nav>a.on{background-color: red;}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="wrap-0" id="wrap-0">wrap-0</div>
+		<div class="wrap-1" id="wrap-1">wrap-1</div>
+		<div class="wrap-2" id="wrap-2">wrap-2</div>
+		<div class="wrap-3" id="wrap-3">wrap-3</div>
+		<div class="wrap-4" id="wrap-4">wrap-4</div>
+		<div class="wrap-5" id="wrap-5">wrap-5</div>
+		<div class="wrap-6" id="wrap-6">wrap-6</div>
+		<div class="wrap-7" id="wrap-7">wrap-7</div>
+	</div>
+	<div class="nav">
+		<a  id="a0" href="#wrap-0">0</a>
+		<a  id="a1" href="#wrap-1">1</a>
+		<a  id="a2" href="#wrap-2">2</a>
+		<a  id="a3" href="#wrap-3">3</a>
+		<a  id="a4" href="#wrap-4">4</a>
+		<a  id="a5" href="#wrap-5">5</a>
+		<a  id="a6" href="#wrap-6">6</a>
+		<a  id="a7" href="#wrap-7">7</a>
+	</div>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+			var aa = $('.nav').find('a');
+			var bb = $('.wrap').find('div');
+			var cc = [];
+			bb.each(function(i){
+				cc.push($(this).offset().top);
+			})
+			var sdome = $(document).scrollTop();
+			for (var i = 0; i < cc.length; i++) {
+					if (sdome > cc[i]-200) {
+						turnTo(i);
+					}
+				}	
+			aa.each(function(i){
+				aa.eq(i).click(function(){
+					$(this).addClass('on').siblings().removeClass('on');
+				})
+			})
+			function turnTo(num){
+				aa.eq(num).addClass('on').siblings().removeClass('on');	
+			}
+			
+			$(window).scroll(function(){
+				var ss = $(document).scrollTop();
+				for (var i = 0; i < cc.length; i++) {
+					if (ss > cc[i]-200) {
+						turnTo(i);
+					}
+				}	
+			})
+			
+			
+
+	</script>
+</body>
+</html>

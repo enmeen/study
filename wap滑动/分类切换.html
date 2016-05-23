@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>分类切换</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript">
+    !(function(doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 64 * (clientWidth / 640) + 'px'; //默认html字体大小为 64px  屏幕宽度为640px
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+    </script>
+</head>
+<body>
+	<div class="box">
+		<div class="list">老虎</div>
+		<div class="list">熊猫</div>
+		<div class="list">狗狗</div>
+		<div class="list">小鸡</div>
+	</div>
+	<div class="box2">
+		<div class="list">	</div>
+		<div class="list">	</div>
+		<div class="list">	</div>
+		<div class="list">	</div>
+	</div>
+	<script type="text/javascript" src="zepto.min.js"></script>
+	<script type="text/javascript" src='fx.js'></script>
+	<script type="text/javascript" src="js.js"></script>
+</body>
+</html>

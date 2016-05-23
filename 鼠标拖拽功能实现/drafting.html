@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>drafting</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		html,body{width: 100%;height: 100%;}
+		body{font-family: '微软雅黑';font-size: 12px;}
+		.box-header{width: 320px;height: 70px;line-height: 70px;text-align: center;
+					background-color: #B7A9A9;color:#000;
+					position: absolute;left: 300px;top:300px;cursor: crosshair;border:2px solid red;}
+	</style>
+</head>
+<body>
+
+		<div class="box-header" id="box-header" onselectstart="return false">点我拖拽</div>
+
+	<script type="text/javascript">
+	function g(id){
+		return document.getElementById(id);
+	}
+		//鼠标按下
+		var header = g('box-header');
+		var headerX = 0;
+		var headerY = 0;
+		var mouseoffsetX = 0,mouseoffsetY = 0;
+		var isDown = false;
+		header.addEventListener('mousedown',function(e){
+			 headerX = header.offsetLeft;
+			 headerY = header.offsetTop;
+			var e =  e || window.event;
+			mouseoffsetX = e.pageX;
+		    mouseoffsetY = e.pageY;
+			isDown = true;
+		})
+		//鼠标移动
+		document.onmousemove = function(e){
+			var e =  e || window.event;
+			var mouseXX = e.pageX;
+		    var mouseYY = e.pageY;
+		    var moveX = mouseXX - mouseoffsetX;
+		    var moveY = mouseYY - mouseoffsetY;
+			if (isDown === true) {
+					
+					header.style.left = moveX + headerX+ 'px';
+					header.style.top = moveY+ headerY +'px';
+			};
+			
+		}
+		
+		//鼠标放开
+		document.onmouseup = function(){
+			isDown = false;
+		}
+
+	</script>
+</body>
+</html>

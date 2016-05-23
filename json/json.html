@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>json</title>
+</head>
+<body>
+<div class="a b c d"></div>
+	<script type="text/javascript">
+		var book = {
+			title:"json测试",
+			authors:["xyf"],
+			year:2016
+		};
+		var books = JSON.stringify(book,null,4);
+		var bookss = JSON.parse(books);
+		var a = document.getElementsByClassName('a')[0];
+		console.log(a.classList) //ie不支持该属性,对于多个类的局部操作 可以使用jq 和 正则表达式
+	</script>
+</body>
+</html>

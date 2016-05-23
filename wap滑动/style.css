@@ -1,0 +1,10 @@
+*{margin: 0;padding: 0;}
+html{font-size: 64px;}
+body{width: 100%;overflow-x:hidden;}
+.box{max-width: 640px;width: 100%;margin: 0 auto;margin-left: 0%;}
+.list{border: 1px solid blue;box-sizing: border-box;display: inline-block; margin-left: 0.034375rem;width: 4.6875rem;height: 4.6875rem;}
+.on .list{width: 9.375rem;height: 4.6875rem;}
+
+.box2{background: yellow;width: 100%;position: absolute;top: 0;right: -100%;z-index: 9999;}
+.box.left{transform: translateX(-40%);transition: all .3s}
+.box2.left{transform: translateX(-100%);transition: all .3s}
