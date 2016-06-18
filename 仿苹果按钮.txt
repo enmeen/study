@@ -1,0 +1,14 @@
+.btn-yuan{width:1.25rem;height:0.78125rem;border-radius: .8rem;background-color: #CCC;-webkit-transition:all .3s;transition:all .3s;}
+	/* 按钮部分 */
+.label-switch input{display: none;}
+.label-switch input[type='checkbox']:checked + .btn-yuan{background: #4cd964;-webkit-transition:all .3s;transition:all .3s; }
+.label-switch .btn-yuan:before{position: absolute;z-index: 1;top: 0;left: 0;box-sizing: border-box;width:1.25rem;height:0.78125rem;content: ' ';-webkit-transition-duration: 300ms;transition-duration: 300ms;-webkit-transform: scale(1);transform: scale(1);border-radius: .8rem;}
+.label-switch .btn-yuan:after{position: absolute;z-index: 2;top: 0;left: 0;width:0.78125rem;height:0.78125rem;content: ' ';-webkit-transition-duration: 300ms;transition-duration: 300ms;-webkit-transform: translateX(0px);transform: translateX(0px);border-radius: 1.4rem;background: #fff;box-shadow: 0 .1rem .25rem rgba(0, 0, 0, .4);}
+.label-switch input[type='checkbox']:checked + .btn-yuan:after{-webkit-transform: translateX(0.421875rem);transform: translateX(0.421875rem);}
+
+<div class="label-switch">
+            <label class="pr">功能异常<em>不能正常使用现有功能</em>
+                <input type="checkbox" />
+                <div class="btn-yuan"></div>
+            </label>
+</div>

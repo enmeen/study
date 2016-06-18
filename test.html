@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    a {
+        float: left;
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+    }
+    
+    .on {
+        border: 1px solid black;
+    }
+    
+    .div {
+        overflow: hidden;
+    }
+    
+    .div2 {
+        width: 200px;
+        height: 200px;
+        background: yellow;
+        border: 1px solid red;
+    }
+    
+    span {
+        background: orange;
+    }
+    
+    li {
+        width: 100px;
+        height: 40px;
+        background: yellow;
+        border: 1px solid red;
+        list-style-image: url(icon.png);
+    }
+    #lineh{
+        border: 1px solid red;
+        
+    }
+    [data-dpr="1"] {font-size: 16px;}
+    [data-dpr="2"] {font-size: 32px;}
+    .pp{font-size: 16px;}
+    </style>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div class="div">
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+    </div>
+    <div class="div2">
+        <span>soannei</span>
+    </div>
+    <p>document.selection.createRange() 根据当前文字选择返回 TextRange 对象，或根据控件选择返回 ControlRange 对象.配合 execCommand，在 HTML 编辑器中很有用，比如：文字加粗、斜体、复制、粘贴、创建超链接等.</p>
+    <button id="btn">button</button>
+    <button id="reszoe">点击测试resize绑定机制</button>
+    <span  id="lineh">测试line-height对行内元素高度的影响</span>
+    <p class="pp">字体12px;</p>
+    <script type="text/javascript">
+    /*点击切换插件,采用事件代理*/
+    function switchover(parent, child, actcls) {
+        var $parent = $(parent).eq(0);
+        var $child = $(child);
+        $parent.on('click', $child, function(e) {
+            var eTar = e.target;
+            var $eTar = $(eTar); //转化为jq对象 
+            $eTar.addClass(actcls).siblings().removeClass(actcls);
+            return false;
+        })
+    }
+    switchover('.div', 'a', 'on')
+        /*qq群案例*/
+    for (var i = 0; i < 10; i++) {
+        setTimeout(function() {
+            console.log(i)
+        }, 1000)
+    }
+    /*js获取鼠标选中文字*/
+    /*    function getSelect() {
+            console.log(document.selection.createRange());
+        }
+        
+        var t = window.getSelection ? window.getSelection() : (document.getSelection ? document.getSelection() : (document.selection ? document.selection.createRange().text : ""))
+        var c = window.getSelection() ;
+        btn.onclick = function() {
+            console.log(c);
+        }*/
+    var p = document.getElementsByTagName('p')[0];
+    var btn = document.getElementById('btn');
+    var txt = window.getSelection();
+    var bol = document.createElement('b')
+    btn.onclick = function() {
+        if (txt) {
+            document.execCommand('bold');
+        }
+
+
+    }
+
+
+
+
+    $(function(){
+            function test(){ //刚打开 缩放屏幕没事 点击之后window绑定resize事件 之后一直存在
+                $(window).resize(function(){
+                    alert('resize执行');
+                })
+            }
+            
+            var $button  = $('#reszoe');
+            $button.click(function(){
+                test();
+            })
+        })
+    </script>
+</body>
+
+</html>

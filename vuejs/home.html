@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue</title>
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    a{text-decoration: none;}
+    button{outline:none;}
+    #head{width:1200px;height: 80px;border-bottom: 1px solid gray;line-height: 80px;font-size: 20px;background-color: #fff;margin:0 auto;}
+    #head a{float: left;margin-left: 100px;text}
+    #head p{width: 980px;float: left;}
+    #head i{float: right;}
+	#btn{width: 200px;height: 40px;border:1px solid gray;border-radius: 10px;background-color: #fff;margin: 0 auto;display: block;margin-top: 10px;}
+    #btn:hover{color: blue;cursor: pointer;}
+    </style>
+</head>
+
+<body>
+    <div id="head"><a href=""><</a><p v-text="message" v-bind:style= "{color:activeColor,fontSize:fontS,textAlign:wz,transform:tf}"></p><i v-text="num"></i></div>
+    <button id="btn" v-on:click="delet" v-text="message"></button>
+    <script type="text/javascript" src="vue.js"></script>
+    <script type="text/javascript">
+    var head = new Vue({
+        el: '#head',
+        data: {
+        	message:'你们好',
+        	activeColor:'#eee',
+        	fontS:'30px',
+        	wz:'center',
+        	tf:'translateX(100px)'
+        },
+        computed:{
+        	num : function(){
+        		return '返回次数3'
+        	}
+        }
+    })
+    var btn = new Vue({
+    	el:'#btn',
+    	data:{
+    		message:'哈哈 我是按钮快来点我',
+    	},
+    	methods:{
+    		delet:function(event){
+    			alert('叫你点你就点啊，愚昧');
+    		}
+    	}
+    })
+    
+    </script>
+</body>
+
+</html>

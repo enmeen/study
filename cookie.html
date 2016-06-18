@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>cookie</title>
+    <style type="text/css">
+    div {
+        width: 200px;
+        height: 100px;
+        margin: 0 auto;
+        background-color: #e8e8e8;
+        text-align: center;
+        line-height: 100px;
+    }
+    </style>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div>
+        我是弹出的弹出窗
+    </div>
+    <script type="text/javascript">
+    /*简单的隔天触发一次弹窗*/
+    $(function() {
+        onlyone();
+
+        function onlyone() {
+            var nowdate = new Date().getDate();
+            var xyf_cookie = parseInt(getCookie('xyf'));
+            if (!xyf_cookie || xyf_cookie != nowdate) {
+                //弹出窗口
+                alert('cookie测试');
+                addCookie();
+            }
+
+            function addCookie() { //添加cookie
+                var date = new Date().getDate();
+                document.cookie = "xyfpc=" + escape(date);
+            }
+
+            function getCookie(name) { //获取cook名
+                var cook = document.cookie;
+                var arrcook = cook.split(';')
+                var n = arrcook.length;
+                for (var i = 0; i < n; i++) {
+                    var arrvalue = arrcook[i].split('=');
+                    if (arrvalue[0] == name) {
+                        return unescape(arrvalue[1]);
+                    }
+                }
+            }
+        }
+
+
+    })
+    </script>
+</body>
+
+</html>

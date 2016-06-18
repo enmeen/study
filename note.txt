@@ -1,0 +1,9 @@
+1.css属性的选择对动画性能的影响
+	我们在改变一些属性时，如果是跟layout相关的属性，则会触发重新布局，导致渲染和绘制所需要的时间将会更长。因此，我们在写动画的时候因该规避这些属性：width, height, margin, padding, border, display, top, right, bottom ,left, position, float, overflow等。不会出发重新布局的属性有：transform(其中的translate, rotate, scale), color, background等。所以，我们平时在写css动画时，应该优先使用不触发重新布局的属性，这样可以使我们所展示动画效果的更加流畅。
+
+2.jq选择符
+$('span',this)  等同   $(this).find('span')
+
+3.闭包
+闭包只能取得包含函数中任何变量的最后一个值。
+ http://wpa.qq.com/msgrd?v=3&uin=3069192295&site=qq&menu=yes

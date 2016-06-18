@@ -1,0 +1,16 @@
+<!-- message/s -->
+<div class="message">
+    <div class="message-box clearfix">
+        <div class="fl message-left">包邮</div>
+        <i class="message-line"></i>
+        <div class="fl message-right">全场商品凡现金总额满&yen;599，即可包邮。</div>
+    </div>
+</div>
+<!--message/e -->
+
+/* message */
+.message{padding: 0 0.3125rem 0 0.3125rem;height: 1.0625rem;border-bottom: 1px solid  #E7E7E7;}
+.message-box{border-top:1px solid  #E7E7E7;width: 100%;}
+.message-left{width: 1.46875rem;height: 100%;line-height: 1.0625rem;font-size: 0.34375rem;color: #333333;text-indent: 0.15625rem;}
+.message-right{height: 100%;line-height: 1.0625rem;font-size: 0.34375rem;color: #666666;text-indent: 0.4375rem;}
+.message-line{float: left;width: 2px;height: 0.46875rem;background:#E7E7E7;margin-top: 0.3125rem;}
