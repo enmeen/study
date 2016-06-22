@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>react</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+
+<body>
+<div id="example"></div>
+<div id="xyff"></div>
+    
+    <script type="text/babel">
+    ReactDOM.render( < h1 > Hello, world! < /h1>,
+        document.getElementById('example')
+    );
+    var xyfisaCoolMan = React.createClass({
+    	render:function(){
+    		return <h1> hello,{this.props.name} </h1>
+    	}
+    })
+    ReactDOM.render(
+		<xyfisaCoolMan name="xyf" />,
+		document.getElementById('xyff')
+    )
+    </script>
+</body>
+
+</html>
