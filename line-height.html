@@ -8,7 +8,7 @@
     padding: 0;
 }
 body{font-family: '微软雅黑';padding:100px;}
-h1{margin-bottom: 10px;;}
+h2{margin-bottom: 10px;;}
 .first div{
     width:100%;
     font-size:22px;
@@ -27,6 +27,7 @@ h1{margin-bottom: 10px;;}
     
 
 }
+
 del{
     font-size:12px;margin-left: 10px;
     line-height: 12px;
@@ -37,15 +38,13 @@ del{
 }
 .height div{
     width:100%;
+    height: 32px;;
     font-size:22px;
+    line-height: 32px;;
     border:1px solid #000;
-    margin-bottom:5px;
     
 }
-.getHeigt{
-    height:32px;font-size: 22px;
-    line-height: 32px;
-}
+
 hr{margin:50px;}
 .online{
     line-height: 1;
@@ -55,30 +54,52 @@ hr{margin:50px;}
     font-size:22px;
     border:1px solid #000;
 }
+
+#test div{
+    font-size: 24px;
+    border:1px solid #000;
+}
+#test h3{margin:10px auto;}
+.line1{line-height: 1;}
+.line100{line-height: 100%;}
+.lineem{line-height: 1em;}
 </style>
 </head>
 <body>
-    <h1>都没定height的情况下~ 要求字与字之间的上下距离为10px</h1>
+    <h1>要求字与字之间的上下距离为10px</h1>
+    <h2>1.都没定height的情况下~ </h2>
+    <h3>黑色边框线的距离即为设置的margin-bottom的距离，而不是上下字与字之间的距离</h3>
     <div class="first">
-        <div>没设置line-height<del>100通过调整vertical-align来垂直居中</del></div>
+        <div>没设置line-height,采用系统默认的值<del>100</del></div>
         <div>100元</div>
+        <img src="1.png" alt="" />
+        
     </div>
     <hr />
+    <h3>解决办法：</h3>
+    <h4>设置父元素的line-height = 1</h4>
     <div class="wrap">
-        <div>设置line-height = font-size<del>100通过调整vertical-align来垂直居中</del></div>
+        <div>商品<del>100通过调整vertical-align来垂直居中</del></div>
         <div>100元</div>
         <strong>缺点：如果是需要点击的 这种写法，可点击区域较小</strong>
     </div>
-    <h1>设定高度</h1>
+    <h2>2.设定高度的情况</h2>
     <div class="height">
-        <div>设置line-height = font-size<del>100通过调整vertical-align来垂直居中</del></div>
+        <div>height = line-hieght = font-size + 10 <del>100通过调整vertical-align来垂直居中</del></div>
         <div class="getHeigt">100元</div>
     </div>
     <hr>
-    <h1>网上的答案</h1>
-    <div class="online">
-        <div>商品名</div>
-        <div>100</div>
+    <h2>不同line-height值得具体表现</h2>
+
+<div id="test">
+    
+
+    <article class="underfined"><h3>未定义line-height。根据浏览器默认</h3><div>中文</div><div>89</div><div>english</div></article>
+    <article class="line1"><h3>lineHeight = 1</h3><div>中文</div><div>89</div><div>english</div></article>
+    <article class="line100"><h3>line-height = 100%</h3><div>中文</div><div>89</div><div>english</div></article>
+    <article class="lineem"><h3>line-height = 1em</h3><div>中文</div><div>89</div><div>english</div></article>
+    
+
     </div>
 </body>
 </html>
