@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <canvas id='canvas' width="400" height="400"></canvas>
+    <canvas id='clone'  width="400" height="400"></canvas>
+    <canvas id="z"  width="400" height="400"></canvas>
+    <script type="text/javascript">
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+
+    var clone = document.getElementById('clone');
+    var cloCtx = clone.getContext('2d');
+
+    var z = document.getElementById('z');
+    var zCtx = z.getContext('2d');
+
+    var vCanvas = document.createElement('canvas');
+    vCanvas.width = 400;
+    vCanvas.height = 400;
+    var vCtx = vCanvas.getContext('2d');
+
+    var vzCanvas = document.createElement('canvas');
+    vzCanvas.width = 400;
+    vzCanvas.height = 400;
+    var vzCtx = vzCanvas.getContext('2d');
+
+
+    var img = new Image();
+
+    img.onload = function(){
+        vCtx.drawImage(img,0,0);
+
+        console.time('直接用img绘制多次');
+        for(var i = 0;i<2000;i++){
+            ctx.save();
+            ctx.translate(i, i);
+            ctx.rotate(i);
+            ctx.translate(-i, -i);
+            ctx.drawImage(img,i+10,i+10);
+            ctx.restore();
+        }
+        console.timeEnd('直接用img绘制多次');
+
+        console.time('将图片存入canvas中，使用该canvas绘制多次');
+        for(var n = 0;n<2000;n++ ){
+            cloCtx.save();
+            cloCtx.translate(n, n);
+            cloCtx.rotate(n);
+            cloCtx.translate(-n, -n);
+            cloCtx.drawImage(vCanvas,n+10,n+10);
+            cloCtx.restore();
+        }
+        console.timeEnd('将图片存入canvas中，使用该canvas绘制多次');
+
+        console.time('缓存后一次性绘制');
+            for(var s = 0;s<2000;s++ ){
+            vzCtx.save();
+            vzCtx.translate(s, s);
+            vzCtx.rotate(s);
+            vzCtx.translate(-s, -s);
+            vzCtx.drawImage(img,s+10,s+10);
+            vzCtx.restore();
+        }
+        
+        zCtx.drawImage(vzCanvas,0,0);        
+        console.timeEnd('缓存后一次性绘制');
+
+}
+    img.crossOrigin = "anonymous";
+    img.src = 'http://s17.mogucdn.com/p2/160808/upload_7ebbcc2kcel5f6d85g3ik002h1ll4_127x127.png';
+
+    
+    function testSave(){
+        ctx.save();
+        ctx.clearRect(0,0,400,400);
+        ctx.restore();
+    }
+
+
+    </script>
+    </body>
+</html>

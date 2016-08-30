@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+
+
+//1.在requestAnimationFrame运行时检测fps过低自动跳转到setTimeOut
+//2.在运行前检测一遍requestAnimationFrame的适用度
+
+var requestAnimFrame = (function() {
+    return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        function(callback) {
+            window.setTimeout(callback, 1000 / 60);
+        };
+})();
+ var cancelrequestAnimFrame = (function() {
+        return window.cancelAnimationFrame || function(id) {
+            clearTimeout
+        }
+    })();
+
+/*var requestAnimFrame = (function(){
+    var fps = 0;
+    var lastTime = Date.now();
+    var offset = 0;
+    var stop; 
+    requestAnimationFrame(step);
+    function step(){
+        offset = Date.now() - lastTime;
+        fps++;
+        if (offset >= 1000) {//每秒重置
+            console.log(fps)
+            if (fps < 30) {
+                cancelrequestAnimFrame(stop);
+                return function(callback){
+                    window.setTimeout(callback, 1000 / 60);
+                }
+            };
+            if (fps> 40) {
+                cancelrequestAnimFrame(stop)
+                return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame;
+            };
+        offset = 0;
+        fps = 0;
+        lastTime = Date.now();
+        };
+       stop = requestAnimationFrame(step);
+    }
+  
+})(); */
+
+
+var c;
+var obj = function() {
+    var request = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
+    var setTime = function(callback){
+        window.setTimeout(callback, 1000 / 60);
+    }
+    if (request) {
+        var fps = 0;
+        var lastTime = Date.now();
+        var offset = 0;
+        var stopId;
+        request(step);
+
+        function step() {
+            offset = Date.now() - lastTime;
+            fps++;
+            if (offset>=1000) {
+                console.log(fps)
+                if (fps < 30) {
+                    c = setTime
+                    return c
+                }else{
+                    c = request
+                    return c
+                }
+            };
+            request(step);
+        }
+
+    } else {
+        c = setTime;
+        return c
+    }
+};
+
+
+
+
+
+    </script>
+    </body>
+</html>

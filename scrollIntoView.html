@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>scrollIntoView</title>
+  <style type="text/css" media="screen">
+    *{margin:0;padding: 0;}
+    .nav{width: 1200px;height: 90px;margin: 0 auto;}
+    .nav li{float: left;text-align: center;border: 1px solid black;line-height: 90px;width: 24.8%;cursor: pointer;}
+    .a{width: 1200px;margin: 0 auto;height: 800px;border: 1px solid black;}
+  </style>
+</head>
+<body>
+    <nav class="nav">
+        <ul>
+          <li onclick="oneClick()">点我移动到1</li>
+          <li  onclick="twoClick()">点我移动到2</li>
+          <li  onclick="threeClick()">点我移动到3</li>
+          <li onclick="fourClick()">点我移动到4</li>
+        </ul>
+    </nav>
+    <div class="one a">one</div>
+    <div class="two a">two</div>
+    <div class="three a">three</div>
+    <div class="four a">four</div>
+    <script type="text/javascript">
+        var one = document.querySelector('.one');
+        var two = document.querySelector('.two');
+        var three = document.querySelector('.three');
+        var four = document.querySelector('.four');
+        var li = document.getElementsByTagName('li');
+        var option = {block: "start", behavior: "smooth"};
+        function oneClick(){
+          one.scrollIntoView(option);
+        }
+        function twoClick(){
+          two.scrollIntoView(option);
+        }
+        function threeClick(){
+          three.scrollIntoView(option);
+        }
+        function fourClick(){
+          four.scrollIntoView(option);
+        }
+    </script>
+</body>
+</html>

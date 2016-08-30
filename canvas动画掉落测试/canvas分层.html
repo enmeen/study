@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas 分层性能测试</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		#bg{position: absolute;left:0;top: 0;z-index: 1;}
+		#canvas{position: absolute;left:0;top: 0;z-index: 2;}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="750" height="1217"></canvas>
+	<canvas id="bg" width="750" height="1217"></canvas>
+	<script type="text/javascript" src="js/canvas.js"></script>
+</body>
+</html>
